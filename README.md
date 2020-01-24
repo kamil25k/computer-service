@@ -18,7 +18,7 @@ To run application you need:
 ```
 ## Run application
 ```
-git clone git@github.com:kamil25k/forum-engine-rest.git
+git clone git@github.com:kamil25k/computer-service.git
 cd ../computer-service
 mvn spring-boot:run
 ```
