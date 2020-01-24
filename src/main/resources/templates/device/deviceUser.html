@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User devices</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container">
+
+
+    <h1 class="text-center" th:text="${user.name} + ' ' + ${user.lastName} + ' devices'"></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Brand</td>
+            <td>Model</td>
+            <td>Serial number</td>
+            <td>Type</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody th:each="device : ${device}">
+        <tr>
+
+            <td th:text="${device.id}"/>
+            <td th:text="${device.deviceBrand}"/>
+            <td th:text="${device.deviceModel}"/>
+            <td th:text="${device.serialNumber}"/>
+            <td th:text="${device.type}"/>
+            <td><a th:href ="${'/order/new/'+device.id+'/'+user.id}"><button type="button" class="btn btn-default">New order</button> </a></td>
+               </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a th:href="${'/device/new/'+user.id}"><button type="button" class="btn btn-default">Add device</button> </a>
+        <a th:href="${'/user/all'}"><button type="button" class="btn btn-default">Return</button></a>
+    </div>
+
+</div>
+</body>
+</html>

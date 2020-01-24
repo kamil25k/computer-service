@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit device</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container">
+
+
+    <!--    <form class="form-horizontal" th:object="${device}" th:action="@{/admin/deviceupdate}" th:method="post">-->
+    <form class="form-horizontal" th:object="${device}" th:action="@{/device/save}" th:method="post">
+
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{user.id}"/>
+
+
+        <div class="form-group">
+            <label class="control-label">Brand:</label>
+            <input type="text" class="form-control" th:field="*{deviceBrand}"/>
+            <p th:if="${#fields.hasErrors('deviceBrand')}" th:errors="*{deviceBrand}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Model:</label>
+            <input type="text" class="form-control" th:field="*{deviceModel}"/>
+            <p th:if="${#fields.hasErrors('deviceModel')}" th:errors="*{deviceModel}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Serial number:</label>
+            <input type="text" class="form-control" th:field="*{serialNumber}"/>
+            <p th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Type:</label>
+            <input type="text" class="form-control" th:field="*{type}"/>
+            <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}"/>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-default">Save</button>
+
+            <a href="/device/all">
+                <button type="button" class="btn btn-default">Return</button>
+            </a>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

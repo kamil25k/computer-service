@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<div class="container-fluid">
+    <h1 class="text-center">Order details</h1>
+
+</div>
+
+<body>
+<div style="margin-left: auto; margin-right: auto; width: 80%">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Owner</td>
+            <td>Phone number</td>
+            <td>Email</td>
+            <td>Device brand</td>
+            <td>Device model</td>
+            <td>Serial number</td>
+            <td>Device type</td>
+            <td>Status</td>
+            <td>Expected cost</td>
+            <td>Final cost</td>
+            <td>Start date</td>
+            <td>Finish date</td>
+
+        </tr>
+        </thead>
+        <tr>
+            <td th:text="${order.id}"/>
+            <td th:text="${order.user.name+' '+order.user.lastName}"/>
+            <td th:text="${order.user.phoneNumber}"/>
+            <td th:text="${order.user.email}"/>
+            <td th:text="${order.device.deviceBrand}"/>
+            <td th:text="${order.device.deviceModel}"/>
+            <td th:text="${order.device.serialNumber}"/>
+            <td th:text="${order.device.type}"/>
+            <td th:text="${order.status}"/>
+            <td th:text="${order.expectedCost}"/>
+            <td th:text="${order.finalCost}"/>
+            <td th:text="${order.startDate}"/>
+            <td th:text="${order.finishDate}"/>
+        </tr>
+    </table>
+
+    <div>
+        <a href="/order/all">
+            <button class="btn btn-default">Return</button>
+        </a>
+    </div>
+</div>
+
+
+</body>
+</html>

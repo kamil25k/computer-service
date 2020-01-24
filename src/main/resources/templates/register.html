@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign up</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    <form class="form-horizontal" th:object="${user}" th:action="@{/register}" th:method="post">
+        <div class="form-group">
+
+            <label class="control-label">Name:</label>
+            <input type="text" class="form-control" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Last name:</label>
+            <input type="text" class="form-control" th:field="*{lastName}"/>
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Username:</label>
+            <input type="text" class="form-control" th:field="*{username}"/>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label">Password:</label>
+            <input type="text" class="form-control" th:field="*{password}"/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Phone number:</label>
+            <input type="number" class="form-control" th:field="*{phoneNumber}"/>
+            <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Email:</label>
+            <input type="text" class="form-control" th:field="*{email}"/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-default">Save user</button>
+            <a href="/">
+                <button type="button" class="btn btn-default">Return</button>
+            </a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

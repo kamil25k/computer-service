@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User detail</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container">
+
+    <h3>USER DETAIL</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Last name</td>
+            <td>Username</td>
+            <td>Phone number</td>
+            <td>Email</td>
+            <td>User role</td>
+        </tr>
+        </thead>
+        <tr>
+            <td th:text="${user.id}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.lastName}"/>
+            <td th:text="${user.username}"/>
+            <td th:text="${user.phoneNumber}"/>
+            <td th:text="${user.email}"/>
+            <td th:text="${user.role}"/>
+        </tr>
+    </table>
+
+<div>
+    <a href="/user/all"><button class="btn btn-default">Return</button></a>
+</div>
+</div>
+
+</body>
+</html>

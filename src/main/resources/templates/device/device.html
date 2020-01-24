@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Device detail</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container">
+
+    <h3>DEVICE DETAIL</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Brand</td>
+            <td>Model</td>
+            <td>Serial number</td>
+            <td>Type</td>
+            <td>Owner</td>
+
+        </tr>
+        </thead>
+        <tr>
+            <td th:text="${device.id}"/>
+            <td th:text="${device.deviceBrand}"/>
+            <td th:text="${device.deviceModel}"/>
+            <td th:text="${device.serialNumber}"/>
+            <td th:text="${device.type}"/>
+            <td th:text="${device.user.name} + ' ' + ${device.user.lastName}"/>
+
+        </tr>
+    </table>
+
+    <div>
+        <a href="/device/all">
+            <button class="btn btn-default">Return</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

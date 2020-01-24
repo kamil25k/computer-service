@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <h1 class="text-center">Users List</h1>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Last name</td>
+            <td>Username</td>
+            <td>Phone number</td>
+            <td>Actions</td>
+
+        </tr>
+        </thead>
+        <tbody th:each="user : ${user}">
+        <tr>
+            <td th:text="${user.id}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.lastName}"/>
+            <td th:text="${user.username}"/>
+            <td th:text="${user.phoneNumber}"/>
+
+            <td><a th:href ="${'/user/'+user.id}"><button type="button" class="btn btn-default">Details</button></a>
+            <a th:href ="${'/user/modify/'+user.id}"><button type="button" class="btn btn-default">Edit</button></a>
+            <a th:href ="${'/user/delete/'+user.id}"><button type="button" class="btn btn-default">Delete</button></a>
+            <a th:href ="${'/user/device/'+user.id}"><button type="button" class="btn btn-default">Devices</button></a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a th:href="${'/user/new'}"><button type="button" class="btn btn-default">Add user</button> </a>
+        <a th:href="${'/'}"><button type="button" class="btn btn-default">Return to home page</button></a>
+    </div>
+
+
+</div>
+</body>
+</html>

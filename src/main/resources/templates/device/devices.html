@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Devices</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <h1 class="text-center">Devices</h1>
+</div>
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Brand</td>
+            <td>Model</td>
+            <td>Serial number</td>
+            <td>Type</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody th:each="device : ${device}">
+        <tr>
+
+            <td th:text="${device.id}"/>
+            <td th:text="${device.deviceBrand}"/>
+            <td th:text="${device.deviceModel}"/>
+            <td th:text="${device.serialNumber}"/>
+            <td th:text="${device.type}"/>
+            <td><a th:href="${'/device/'+device.id}">
+                <button type="button" class="btn btn-default">Details</button>
+            </a>
+                <a th:href="${'/device/modify/'+device.id}">
+                    <button type="button" class="btn btn-default">Edit</button>
+                </a>
+                <a th:href="${'/device/delete/'+device.id}">
+                    <button type="button" class="btn btn-default">Delete</button>
+                </a>
+                <a th:href="${'/order/new/'+device.id+'/'+device.user.id}">
+                    <button type="button" class="btn btn-default">New order</button>
+                </a>
+            <td></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a th:href="${'/'}">
+            <button type="button" class="btn btn-default">Return to home page</button>
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

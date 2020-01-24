@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <h1 class="text-center">Orders</h1>
+</div>
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>User</td>
+            <td>Device</td>
+            <td>Description</td>
+            <td>Expected cost</td>
+            <td>Final cost</td>
+            <td>Status</td>
+            <td>Actions</td>
+
+        </tr>
+        </thead>
+        <tbody th:each="order : ${order}">
+        <tr>
+
+            <td th:text="${order.id}"/>
+            <td th:text="${order.user.name+' '+order.user.lastName}"/>
+            <td th:text="${order.device.deviceBrand} + ' ' + ${order.device.deviceModel}"/>
+            <td th:text="${order.description}"/>
+            <td th:text="${order.expectedCost}"/>
+            <td th:text="${order.finalCost}"/>
+            <td th:text="${order.status}"/>
+
+            <td><a th:href="${'/order/'+order.id}">
+                <button type="button" class="btn btn-default">Details</button>
+            </a>
+                <a th:href="${'/order/modify/'+order.id}">
+                    <button type="button" class="btn btn-default">Edit</button>
+                </a>
+                <a th:href="${'/order/delete/'+order.id}">
+                    <button type="button" class="btn btn-default">Delete</button>
+                </a>
+                <a th:href="${'/order/finish/'+order.id}">
+                    <button type="button" class="btn btn-default">Finish order</button>
+                </a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a th:href="${'/'}">
+            <button type="button" class="btn btn-default">Return to home page</button>
+        </a>
+    </div>
+
+
+</div>
+</body>
+</html>

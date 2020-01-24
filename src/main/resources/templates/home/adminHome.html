@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+        <h1 class="text-center" th:text="${user.name} + ' ' + ${user.lastName} + ' - Admin panel'"></h1>
+            <a href="#" th:href="@{'/logout'}"> <button type="button" class="btn btn-default float-right">Logout</button></a>
+
+
+</div>
+            <div class="container text-center" style="padding-top: 50px">
+
+    <a href="/user/all"><button type="button" class="btn btn-default">Users</button></a>
+    <a href="/device/all"><button type="button" class="btn btn-default">Devices</button></a>
+    <a href="/order/all"><button type="button" class="btn btn-default">Orders</button></a>
+<!--    <a href="/logout">Logout</a>-->
+</div>
+
+</body>
+</html>

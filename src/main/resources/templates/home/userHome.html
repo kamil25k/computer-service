@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+
+    <h1 class="text-center" th:text="${user.name} + ' ' + ${user.lastName} + ' - Your Orders'"></h1>
+                <a href="#" th:href="@{'/logout'}"> <button type="button" class="btn btn-default float-right">Logout</button></a>
+
+
+</div>
+
+<div class="container" style="padding-top: 50px">
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Device</td>
+            <td>Serial number</td>
+            <td>Description</td>
+            <td>Start date</td>
+            <td>Finish date</td>
+            <td>Expected cost</td>
+            <td>Final cost</td>
+            <td>Status</td>
+        </tr>
+        </thead>
+        <tbody th:each="order : ${order}">
+        <tr>
+
+            <td th:text="${order.device.deviceBrand} + ' ' + ${order.device.deviceModel}"/>
+            <td th:text="${order.device.serialNumber}"/>
+            <td th:text="${order.description}"/>
+            <td th:text="${order.startDate}"/>
+            <td th:text="${order.finishDate}"/>
+            <td th:text="${order.expectedCost}"/>
+            <td th:text="${order.finalCost}"/>
+            <td th:text="${order.status}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

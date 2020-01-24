@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container">
+
+    <form class="form-horizontal" th:object="${order}" th:action="@{/order/update}" th:method="post">
+
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{user.id}"/>
+        <input type="hidden" th:field="*{device.id}"/>
+        <input type="hidden" th:field="*{startDate}"/>
+        <input type="hidden" th:field="*{finishDate}"/>
+        <input type="hidden" th:field="*{status}"/>
+
+        <div class="form-group">
+            <label class="control-label">Description</label>
+            <input type="text" class="form-control" th:field="*{description}">
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Expected cost</label>
+            <input type="text" class="form-control" th:field="*{expectedCost}">
+            <p th:if="${#fields.hasErrors('expectedCost')}" th:errors="*{expectedCost}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Final cost</label>
+            <input type="text" class="form-control" th:field="*{finalCost}">
+            <p th:if="${#fields.hasErrors('finalCost')}" th:errors="*{finalCost}"/>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-default">Save</button>
+            <a href="/order/all">
+                <button type="button" class="btn btn-default">Return</button>
+            </a>
+        </div>
+    </form>
+
+
+</div>
+</body>
+</html>

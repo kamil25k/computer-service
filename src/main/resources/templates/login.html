@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign in</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+    <form class="form-horizontal" th:action="@{/authenticate}" th:method="post">
+        <div class="form-group">
+
+            <td colspan="2" th:if="${param.error}"><h5 class="text-danger"> Wrong user or password </h5></td>
+            <td colspan="2" th:if="${param.logout}"><h5 class="text-success"> You have been logged out correctly </h5>
+
+            </td>
+            <td colspan="2" th:if="${param.error==null && param.logout==null}">
+                <h5> Login</h5></td>
+
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                <input type="text" class="form-control" name="username"/></td>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input type="password" class="form-control" name="password"/>
+            </div>
+
+
+            <div>
+                <button type="submit" class="btn btn-default">Sign in</button>
+                <a href="#" th:href="@{'/register'}">
+                    <button type="button" class="btn btn-default">Sign up</button>
+                </a>
+
+                </td>
+
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+
